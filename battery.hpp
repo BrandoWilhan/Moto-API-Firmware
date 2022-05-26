@@ -18,7 +18,7 @@ class Battery
     bool state;                     //idle = false ou attached = true
 
 public:
-
+    
     void setUid(long long int uid){ this->uid = uid; }
     long long int getUid() const { return uid; }
     void setSoc(float soc){ this->soc = soc; }
