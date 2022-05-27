@@ -6,6 +6,7 @@
 class ControlBattery
 {
 public:
+    
     virtual ~ControlBattery(){ }
     virtual void attachBattery(Battery) = 0;
     virtual void detachBattery() = 0;

@@ -12,7 +12,6 @@ private:
     CP cp[6];           //max 6 charge points
 public:
     
-    ~ETB(){};
     void setUid(long int uid){ this->uid = uid; }
     long int getUid() const { return uid; }
     CP getCp(int n) const { return cp[n]; }
