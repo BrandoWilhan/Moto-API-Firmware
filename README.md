@@ -35,4 +35,4 @@ Ambiente de desenvolvimento:
 
     Linux Ubuntu 20.04
     VSCode
-    Versao do C++, provavelmente 14
+    Versao do g++: 11.3
