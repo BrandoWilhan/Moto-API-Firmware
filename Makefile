@@ -1,19 +1,19 @@
 all: simu
 
-simu: main.o moto.o battery.o etb.o
-	g++ main.o moto.o battery.o etb.o -o simu
+simu: Main.o Motorcycle.o Battery.o ChangeBatteryStation.o
+	g++ Main.o Motorcycle.o Battery.o ChangeBatteryStation.o -o simu
 
-main.o: main.cpp
-	g++ main.cpp -c
+Main.o: Main.cpp
+	g++ Main.cpp -c
 
-moto.o: moto.cpp
-	g++ moto.cpp -c
+Motorcycle.o: Motorcycle.cpp
+	g++ Motorcycle.cpp -c
 
-battery.o: battery.cpp
-	g++ battery.cpp -c
+Battery.o: Battery.cpp
+	g++ Battery.cpp -c
 
-etb.o: etb.cpp
-	g++ etb.cpp -c
+ChangeBatteryStation.o: ChangeBatteryStation.cpp
+	g++ ChangeBatteryStation.cpp -c
 
 clean:
 	rm -rf *.o simu

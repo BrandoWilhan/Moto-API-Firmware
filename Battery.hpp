@@ -9,16 +9,22 @@ using namespace std;
 class ControlBattery;
 
 bool const ATTACHED = true;
+bool const IDLE = false;
 
-class Battery
-{
-    long long int uid;              //identificador da bateria
+class Battery{
+    
+private:
+
+    int uid;              //identificador da bateria
     float soc;                      //estado de carga
     ControlBattery *host = NULL;    //moto ou estacao de troca de bateria
-    bool state;                     //idle = false ou attached = true
+    bool state = IDLE;                     //idle = false ou attached = true
 
 public:
-    
+
+    Battery();
+    Battery(int);
+    Battery(int, float);
     void setUid(long long int uid){ this->uid = uid; }
     long long int getUid() const { return uid; }
     void setSoc(float soc){ this->soc = soc; }

@@ -2,25 +2,30 @@
 #define _CP_
 
 #include <iostream>
-#include "battery.hpp"
+#include "Battery.hpp"
 
 using namespace std;
 
 const bool CHARGING = true;
-const bool IDLE = false;
 
-class CP
-{
+
+class ChargePoint{
+
 private:
     
-    bool state = false; //charging = true, idle = false
+    bool state = IDLE; //charging = true, idle = false
 
 public:
     
-    Battery battery;
+    Battery *battery;
+    
+    ChargePoint(){
+        this->battery = new Battery();
+    }
     void setState(bool state){ this->state = state; }
     bool getState() const { return state; }
-  
+    
+    
 };
 
 #endif
