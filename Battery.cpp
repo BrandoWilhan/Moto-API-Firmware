@@ -25,3 +25,17 @@ void Battery::hostDetach(){
 ControlBattery* Battery::getHost(){
     return host;
 }
+
+void Battery::getHostName(){
+    if(instanceof<Moto>(host) && host != NULL){
+        Moto *ptrMoto = dynamic_cast<Moto*>(host);
+        cout << "Host Type: Moto \nHost Identifier: " << ptrMoto->getPlate() << endl;
+    }
+    else if(instanceof<ChangeBatteryStation>(host) && host != NULL){
+        ChangeBatteryStation *ptrChangeBattery = dynamic_cast<ChangeBatteryStation*>(host);
+        cout << "Host Type: ETB \nHost Identifier: " << ptrChangeBattery->getUid() << endl;
+    }
+    else
+        cout << "IDLE" << endl;
+}
+

@@ -23,18 +23,23 @@ void ChangeBatteryStation::showParameters(){
 }
 
 
-void ChangeBatteryStation::attachBattery(int uid, float soc){
-    for(int i = 0; i < 6;i++)
-        if(chargePoint[i].battery->getHost() == NULL){ 
-            //se não esta carregando
-            Battery * battery = new Battery(uid, soc);                                                          // e nao tem host
-            chargePoint[i].battery = battery;
-            chargePoint[i].battery->hostAttach(this);
-            chargePoint[i].setState(CHARGING);
-            cout << "battery allowed in charge point number:" << i << endl;
-            showParameters();
-            break;
-        }
+void ChangeBatteryStation::attachBattery(Battery *battery){
+    if(battery->getHost() == NULL){
+        for(int i = 0; i < 6;i++)
+            if(chargePoint[i].battery->getHost() == NULL){ 
+                //se não esta carregando                                                         // e nao tem host
+                chargePoint[i].battery = battery;
+                chargePoint[i].battery->hostAttach(this);
+                chargePoint[i].setState(CHARGING);
+                battery->getHostName();
+                cout << "battery allowed in charge point number:" << i << endl;
+                showParameters();
+                break;
+            }
+    }
+    else{
+        cout << "Battery already ATTACHED" << endl;
+    }
 }
 
 void ChangeBatteryStation::detachBattery(int uid){

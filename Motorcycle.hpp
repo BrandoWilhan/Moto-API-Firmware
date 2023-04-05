@@ -23,6 +23,7 @@ public:
     inline string getState() const{ 
         return state ? "ON": "OFF";
     }
+
     Battery * getBattery();
     void setPlate(string plate){ this->plate = plate; }
     string getPlate() const { return plate; }
@@ -31,7 +32,7 @@ public:
     void turnOff(){ state = STANDBY; }
     void accelerate(int);    //int time in seconds OK
     void brake(int);         //int time in seconds OK
-    void attachBattery(int, float);         //OK
+    void attachBattery(Battery*);         //OK
     void detachBattery(int);                //OK
     void showParameters();
 

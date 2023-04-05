@@ -21,7 +21,7 @@ void Moto::showParameters(){
 }
 
 void Moto::accelerate(int time){
-    cout << "ACCELERATING" << endl;
+    cout << "************************\n=========ACCELERATING=========\n************************" << endl;
     
     float soc;
     
@@ -35,15 +35,17 @@ void Moto::accelerate(int time){
             battery->setSoc(soc);
             speed += 0.2;
         }
-        else
+        else{
             turnOff();
+            cout << "battery out of charge" << endl;
+        }
     }
 }
 
 void Moto::brake(int time){
     float soc;
 
-    cout << "BRAKING" << endl;
+    cout << "************************\n=========BRAKING=========\n************************" << endl;
 
     if(this->state){
         for(int i = 0; i < time; i++){
@@ -55,16 +57,22 @@ void Moto::brake(int time){
             speed -= 2;
         }
     }
-    else
-        turnOff();
+    else{
+            turnOff();
+            cout << "battery out of charge" << endl;
+    }
 }
 
-void Moto::attachBattery(int uid, float soc){
-    Battery *battery = new Battery(uid, soc);
-    this->battery = battery;
-    this->battery->hostAttach(this);
-    this->battery->setState(ATTACHED);
-    
+void Moto::attachBattery(Battery* battery){
+    if(this->battery->getHost() == NULL && battery->getHost() == NULL){
+        this->battery = battery;
+        this->battery->hostAttach(this);
+        this->battery->setState(ATTACHED);
+        this->battery->getHostName();
+    }
+    else{
+        cout << "Battery already ATTACHED" << endl;
+    }
 }
 
 void Moto::detachBattery(int uid){

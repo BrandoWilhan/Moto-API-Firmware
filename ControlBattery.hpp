@@ -8,7 +8,7 @@ class ControlBattery{
 public:
     
     virtual ~ControlBattery(){ }
-    virtual void attachBattery(int, float) = 0;
+    virtual void attachBattery(Battery*) = 0;
     virtual void detachBattery(int) = 0;
 };
 

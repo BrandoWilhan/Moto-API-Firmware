@@ -18,7 +18,7 @@ public:
     void setUid(long int uid){ this->uid = uid; }
     long int getUid() const { return uid; }
     ChargePoint getChargePoint(int n) const { return chargePoint[n]; }
-    void attachBattery(int, float);                //OK
+    void attachBattery(Battery*);                //OK
     void detachBattery(int);                    //OK
     void setCharge(int n);                      //OK
     void setDischarge(int n);                   //OK
